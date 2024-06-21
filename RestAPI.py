@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 import json
-#import requests
 
 app = Flask(__name__)
 
@@ -15,15 +14,14 @@ def mensagem():
 def desenvolvedor(id):
     if request.method == 'GET':
         try:
-           print "Hello, World!"
-           result = 5 / 2  # results in 2
-            unicode_string = u"Hello"
-            name = raw_input("Enter your name: ")
-try:
-    # code that may raise an exception
-except:
-    # handle exception
+            print("Hello, World!")
+            result = 5 / 2  # results in 2
+            unicode_string = "Hello"
+            name = input("Enter your name: ")
+        except:
+            pass
 
+        try:
             response = devs[id]
         except IndexError:
             mensagem = f'Desenvolvedor de id {str(id)} não encontrado'
