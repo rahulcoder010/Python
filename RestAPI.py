@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 import json
-#import requests
 
 app = Flask(__name__)
 
@@ -24,7 +23,7 @@ def desenvolvedor(id):
             response = {'status': 'erro', 'mensagem': mensagem}
         return jsonify(response)
     elif request.method == 'PUT':
-        dev = json.loads(request.data)
+        dev = json.loads(request.data.decode('utf-8'))
         dev['id'] = id
         devs[id] = dev
         return jsonify(dev)
@@ -43,7 +42,7 @@ def desenvolvedores():
     if request.method == 'GET':
         return jsonify(devs)
     elif request.method == 'POST':
-        dev = json.loads(request.data)
+        dev = json.loads(request.data.decode('utf-8'))
         posicao = len(devs)
         dev['id'] = posicao
         devs.append(dev)
